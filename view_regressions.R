@@ -63,14 +63,14 @@ view_reg <- function(m1 = NA,m2 = NA,m3 = NA,m4 = NA, m5 = NA, covariate.labels 
   }
 }
 
-view_summary_stats <- function(data) {
+view_summary_stats <- function(data, single.row = T) {
   require(stargazer)
   tempDir <- tempfile()
   dir.create(tempDir)
   htmlFile <- file.path(tempDir, "Index.html")
   viewer <- getOption("viewer")
   
-  stargazer(data, summary = TRUE, out = htmlFile, single.row = T)
+  stargazer(data, summary = TRUE, out = htmlFile, single.row = single.row)
   
   viewer(htmlFile)
   rm(htmlFile, tempDir, viewer)
